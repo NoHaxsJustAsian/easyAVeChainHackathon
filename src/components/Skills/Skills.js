@@ -4,8 +4,6 @@ import TechnicalSkills from './TechnicalSkills';
 
 //Icons
 
-import swiftIcon from '@iconify/icons-logos/swift';
-import javaIcon from '@iconify/icons-logos/java';
 import firebaseIcon from '@iconify/icons-logos/firebase';
 import typescriptIcon from '@iconify/icons-logos/typescript-icon';
 import javascriptIcon from '@iconify/icons-logos/javascript';
@@ -14,17 +12,13 @@ import nodejsIcon from '@iconify/icons-logos/nodejs-icon';
 import htmlIcon from '@iconify/icons-vscode-icons/file-type-html';
 import cssIcon from '@iconify/icons-vscode-icons/file-type-css';
 import tailwindIcon from '@iconify/icons-vscode-icons/file-type-tailwind';
-import bootstrapIcon from '@iconify/icons-logos/bootstrap';
-import sqlIcon from '@iconify/icons-skill-icons/mysql-dark';
-import linuxIcon from '@iconify/icons-logos/linux-tux';
-import drRacketIcon from '@iconify/icons-vscode-icons/file-type-racket';
-import latexDark from '@iconify/icons-skill-icons/latex-dark';
+import solidityIcon from '@iconify/icons-vscode-icons/file-type-solidity';
+import vechainIcon from '../../assets/img/vechain.jpeg';
 
 
 export const Skills = () => {
     const skills = [
-        { icon: swiftIcon, label: 'Swift' },
-        { icon: javaIcon, label: 'Java' },
+
         { icon: firebaseIcon, label: 'Firebase' },
         { icon: typescriptIcon, label: 'TypeScript' },
         { icon: javascriptIcon, label: 'JavaScript' },
@@ -33,11 +27,8 @@ export const Skills = () => {
         { icon: htmlIcon, label: 'HTML' },
         { icon: cssIcon, label: 'CSS' },
         { icon: tailwindIcon, label: 'Tailwind' },
-        { icon: bootstrapIcon, label: 'Bootstrap' },
-        { icon: sqlIcon, label: 'SQL' },
-        { icon: latexDark, label: 'LaTeX' },
-        { icon: linuxIcon, label: 'Linux' },
-        { icon: drRacketIcon, label: 'DrRacket' },
+        { icon: solidityIcon, label: 'Solidity' },
+        { icon: vechainIcon, label: 'VeChain'}
     ];
   
     return (

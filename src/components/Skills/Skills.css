@@ -1,0 +1,17 @@
+.skills {
+    background: #1b1b1b;
+    padding: 5% 0;
+  }
+  
+  .main-font {
+    color: #fff;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  
+  .text-blue {
+    color: #3498db;
+  }
+  

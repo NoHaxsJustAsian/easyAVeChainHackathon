@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import headerImg from "../assets/img/dumbo.jpeg";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 
@@ -80,7 +81,7 @@ export const Banner = () => {
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
-            <img className="banner-img" src="https://example.com/image.jpg" alt="Header Img" />
+            <img className = "banner-img" src={headerImg} alt="Header Img" />
           </Col>
         </Row>
       </Container>

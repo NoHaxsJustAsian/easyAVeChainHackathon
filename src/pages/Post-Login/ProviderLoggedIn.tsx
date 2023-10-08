@@ -3,7 +3,7 @@ import { ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { storage } from "../../firebase";
 import { useParams } from "react-router-dom";
 import { Connex } from '@vechain/connex';
-import { getFirestore, collection, doc, getDoc, DocumentSnapshot } from "firebase/firestore";
+import { getFirestore, collection, doc, getDoc, DocumentSnapshot, onSnapshot, query, where} from "firebase/firestore";
 import { db } from "../../firebase";
 
 interface FileUpload {
@@ -39,7 +39,6 @@ const ProviderLoggedIn = () => {
           const userData = userDoc.data();
           const walletID = userData?.walletID;
           if (walletID) {
-            // send contract here 
             try {
               await connex.thor
                 .account(smartContractAdderss)
@@ -62,6 +61,21 @@ const ProviderLoggedIn = () => {
 
             }
           }
+        }
+      };
+
+      const getReceivingAddresses = async () => {
+        const clientsRef = collection(db, "users");
+        let clientWallets: Array<string> = [];
+        let providerDoc = (await getDoc(doc(collection(db, "providers"), id))).data();
+        let walletID = providerDoc?.walletID;
+        let q = query(clientsRef, where("policyNum", "==", walletID));
+        if (q !== null) {
+          onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              clientWallets.push(doc.data()?.walletID);
+            });
+          });
         }
       };
 

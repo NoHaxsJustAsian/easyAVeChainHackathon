@@ -43,7 +43,12 @@ function LoginScreen() {
         };
         getIsClient();
         console.log(isClient);
-        /////////////////////////////////// START REROUTE HERE /////////////////////////////////
+        const nav = useNavigate();
+        if (isClient) {
+          nav(`/user-logged-in/${id}`);
+        } else {
+          nav(`/provider-logged-in/${id}`);
+        }
       })
       .catch((error) => {
         const errorCode = error.code;

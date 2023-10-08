@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { storage } from "../../firebase";
+import { useParams } from "react-router-dom";
 
 interface FileUpload {
     file: File | null;
@@ -8,6 +9,7 @@ interface FileUpload {
   }
 
 const UserLoggedIn = () => {
+    const { id } = useParams<{ id: string }>();
     const [fileUpload, setFileUpload] = useState<FileUpload>({ file: null, url: null });
 
     const handleButtonClick1 = () => {
@@ -20,11 +22,11 @@ const UserLoggedIn = () => {
     };
 
     const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      if (file) {
-        const downloadURL = await uploadFileToStorage(file, 'images/profile.jpg');
-        setFileUpload({ file, url: downloadURL });
-      }
+        const file = event.target.files?.[0];
+        if (file) {
+          const downloadURL = await uploadFileToStorage(file, `${id}`);
+          setFileUpload({ file, url: downloadURL });
+        }
     };
 
     const uploadFileToStorage = async (file: File, path: string): Promise<string> => {

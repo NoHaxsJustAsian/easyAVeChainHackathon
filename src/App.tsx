@@ -7,9 +7,10 @@ import Welcome from "./Home-Page/WelcomePart2";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import RegistrationScreen from "./pages/Login-Register/Registration";
 import LoginScreen from "./pages/Login-Register/Login";
-import Profile from "./pages/Profile/ProfileScreen";
 import Footer from "./pages/Footer";
 import LearnMore from "./pages/LearnMore";
+import ProviderLoggedIn from "./pages/Post-Login/ProviderLoggedIn";
+import UserLoggedIn from "./pages/Post-Login/UserLoggedIn";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/registration" element={<RegistrationScreen />} />
-          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/provider-logged-in/:uid" element={<ProviderLoggedIn />} />
+          <Route path="/user-logged-in/:uid" element={<UserLoggedIn />} />
         </Routes>
       </BrowserRouter>
       <Footer/>

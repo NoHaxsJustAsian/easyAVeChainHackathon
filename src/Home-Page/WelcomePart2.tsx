@@ -3,7 +3,7 @@ import LearnMore from "../pages/LearnMore";
 import AboutUs from "./About-Us";
 import LogoCard from "./LogoCard";
 import TeamMembers2 from "./TeamMembers2";
-import WhyTAPCard from "./WhyTAPCard";
+import WhyVeHealth from "./WhyVeHealth";
 import backgroundIMG from "./bagrand.jpg";
 
 export default function WelcomePage() {
@@ -52,7 +52,7 @@ export default function WelcomePage() {
         <LearnMore />
       </div>
         <div className="bg-gradient-to-t bg-gray-800 via-gray-750 from-gray-700">
-          <WhyTAPCard />
+          <WhyVeHealth />
         </div>
       </section>
       <div

@@ -1,11 +1,10 @@
 import { Container } from "react-bootstrap";
-import React from "react";
 import logo from "./map.png";
 import safety from "./safety-icon.png";
 import snowboard from "./robots.png";
 import world from "./world.png";
 
-function WhyTAPCard() {
+function WhyVeHealth() {
     return (
         <Container>
             <div className="flex flex-wrap justify-between">
@@ -25,10 +24,10 @@ function WhyTAPCard() {
                   <img src={safety} width="37" />
                 </div>
 
-                <h3 className="mt-3 text-xl font-bold text-white">Freedom of Selection</h3>
+                <h3 className="mt-3 text-xl font-bold text-white">Data Verification</h3>
 
                 <p className="mt-4 text-sm text-gray-300">
-                    Not only can you create plans with locations and time, you can choose who joins.
+                    Data is verified to ensure that your healthdata is properly being evaluated.
                 </p>
             </div>
             <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
@@ -59,4 +58,4 @@ function WhyTAPCard() {
     );
 }
 
-export default WhyTAPCard;
+export default WhyVeHealth;

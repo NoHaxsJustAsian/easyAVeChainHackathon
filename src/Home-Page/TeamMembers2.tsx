@@ -5,26 +5,26 @@ const teamMembers2 = [
   {
     name: "Tunwa (Win) Tongtawee",
     photo: require("./Win.jpg"),
-    desc: "3nd year CS student at NEU",
+    desc: "3nd year CS student at Northeastern Univerity",
     link: "https://www.linkedin.com/in/tunwa-tongtawee/",
   },
   {
-    name: "Jaren Adams",
-    photo: require("./Jaren.jpg"),
-    desc: "2nd year CS student at NEU",
-    link: "https://www.linkedin.com/in/jarenadams/",
+    name: "Charles Tang",
+    photo: require("./Charles.jpeg"),
+    desc: "Senior at Ma Academy",
+    link: "https://www.linkedin.com/in/charlestang06/",
   },
   {
-    name: "Caleb Lee",
-    photo: require("./Kale.jpg"),
-    desc: "2nd year CS student at NEU",
-    link: "https://www.linkedin.com/in/caleb-lee-b481b8256/",
+    name: "Aryan Malik",
+    photo: require("./Aryan.jpeg"),
+    desc: "3nd year Math and Finance at Rutgers University",
+    link: "https://www.linkedin.com/in/aryan-malik-xd/",
   },
   {
-    name: "Tristen Li",
-    photo: require("./Tris.jpg"),
-    desc: "3nd year CS student at NEU",
-    link: "https://www.linkedin.com/in/tristen-li/",
+    name: "Adam Belfi",
+    photo: require("./Adam.jpeg"),
+    desc: "5nd year CS student at NEU",
+    link: "https://www.linkedin.com/in/adam-belfki/",
   }
 ];
 

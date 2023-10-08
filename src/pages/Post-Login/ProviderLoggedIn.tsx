@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { Connex } from '@vechain/connex';
 import { getFirestore, collection, doc, getDoc, DocumentSnapshot, onSnapshot, query, where} from "firebase/firestore";
 import { db } from "../../firebase";
+import docs from "./docs.jpg";
 
 interface FileUpload {
     file: File | null;
@@ -95,10 +96,15 @@ const ProviderLoggedIn = () => {
     };
 
     return (
-        <div className="flex justify-center py-4 px-8 space-x-4">
-            <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick1()}>Upload Requirements</button>
-            <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2()}>Payment (For Testing)</button>
+      <div>
+          <div className="flex justify-center py-4 px-8">
+          <img src={docs} alt="Docs" />
         </div>
+        <div className="flex justify-center py-4 px-8 space-x-4">
+          <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick1()}>Upload Requirements</button>
+          <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2()}>Payment (For Testing)</button>
+        </div>
+      </div>
     );
 };
 

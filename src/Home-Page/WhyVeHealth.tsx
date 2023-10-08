@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import logo from "./map.png";
+import individual from "./individual.png";
 import safety from "./safety-icon.png";
 import healthy from "./healthy.png";
 import lock from "./lock.png";
@@ -9,8 +9,8 @@ function WhyVeHealth() {
         <Container>
             <div className="flex flex-wrap justify-between">
             <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
-                <div className="logo">
-                  <img src={logo} width="26" />
+                <div className="individual">
+                  <img src={individual} width="37" />
                 </div>
 
                 <h3 className="mt-3 text-xl font-bold text-white">Individualized</h3>

@@ -2,18 +2,11 @@ import { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './Registration.css'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore/lite";
-
-interface User {
-  username: string,
-  email: string,
-  password: string,
-  firstName: string,
-  lastName: string,
-}
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 function RegistrationScreen() {
   const nav = useNavigate();
@@ -34,7 +27,7 @@ function RegistrationScreen() {
 
   const handleRegistration = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const auth = getAuth();
+    console.log(auth)
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -52,7 +45,6 @@ function RegistrationScreen() {
     const id = user?.uid;
     const userRef = doc(collection(db, 'users'), id);
     setDoc(userRef, {
-      email: email,
       walletID: walletID,
     });
   }
@@ -120,7 +112,7 @@ function RegistrationScreen() {
                   setWalletID(val);
                 }}/>
             </InputGroup>
-            <Button variant="danger" type="submit" className='SubmitButton'>
+            <Button variant="outline-secondary" type="submit" className='SubmitButton'>
               Sign up
             </Button>
             {error && (
@@ -136,8 +128,8 @@ function RegistrationScreen() {
           <LogoCard/>
         </div>
       </div>
-      <div className="bg-danger">
-        <img src={backdrop} className="object-cover" width="1178px"/>
+      <div className="bg-info z-0">
+        <img src={backdrop} className="object-fill h-full" width="1178px" />
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "./Registration.css";
-import axios from "axios";
-import { url } from "../../constants";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, doc, getDoc } from "firebase/firestore/lite";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
 
@@ -14,7 +14,7 @@ interface User {
 
 function LoginScreen() {
   const nav = useNavigate();
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState(false);
 
@@ -22,25 +22,25 @@ function LoginScreen() {
     setPasswordShown(!passwordShown);
   };
 
-  const handleLogin = (username: string, password: string) => {
-    axios
-      .get(url + "users/login", {
-        params: {
-          username: username,
-          password: password,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        const id = res.data._id.toString();
-        nav("/feed/" + id);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleLogin(username, password);
+    const auth = getAuth();
+    const db = getFirestore();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    const user = userCredential.user;
+    const id = user?.uid;
+    const userRef = doc(collection(db, 'users'), id);
+    const walletID = getDoc(userRef)
+    console.log(userRef);
+    console.log(walletID);
+    })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+  });
   };
 
   return (
@@ -49,14 +49,14 @@ function LoginScreen() {
         <div className="pt-28 px-8">
           <header className="Header font-sans font-bold">Log in</header>
           <hr className="pt-0" />
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={handleLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
-                type="username"
-                placeholder="Username"
+                type="email"
+                placeholder="Email"
                 onChange={(e) => {
                   const val = e.target.value;
-                  setUsername(val);
+                  setEmail(val);
                 }}
               />
             </Form.Group>

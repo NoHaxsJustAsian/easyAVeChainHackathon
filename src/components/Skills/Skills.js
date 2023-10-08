@@ -5,7 +5,6 @@ import TechnicalSkills from './TechnicalSkills';
 //Icons
 
 import firebaseIcon from '@iconify/icons-logos/firebase';
-import typescriptIcon from '@iconify/icons-logos/typescript-icon';
 import javascriptIcon from '@iconify/icons-logos/javascript';
 import reactIcon from '@iconify/icons-logos/react';
 import nodejsIcon from '@iconify/icons-logos/nodejs-icon';
@@ -20,7 +19,6 @@ export const Skills = () => {
     const skills = [
 
         { icon: firebaseIcon, label: 'Firebase' },
-        { icon: typescriptIcon, label: 'TypeScript' },
         { icon: javascriptIcon, label: 'JavaScript' },
         { icon: reactIcon, label: 'React' },
         { icon: nodejsIcon, label: 'Node.js' },

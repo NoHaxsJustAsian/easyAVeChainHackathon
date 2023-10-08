@@ -18,6 +18,7 @@ function LoginScreen() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState(false);
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -27,24 +28,39 @@ function LoginScreen() {
     event.preventDefault();
     const db = getFirestore();
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    const user = userCredential.user;
-    const id = user?.uid;
-    const userRef = doc(collection(db, 'users'), id);
-    const walletID = getDoc(userRef)
-    console.log(userRef);
-    console.log(walletID);
-    })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-  });
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const id = user?.uid;
+        const userRef = doc(collection(db, "users"), id);
+        const getIsClient = async () => {
+          let userRef = doc(collection(db, "users"), user.uid);
+          let docSnap = await getDoc(userRef);
+          if (docSnap.exists()) {
+            setIsClient(true);
+          } else {
+            setIsClient(false);
+          }
+        };
+        getIsClient();
+        console.log(isClient);
+        /////////////////////////////////// START REROUTE HERE /////////////////////////////////
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", height: "92vh"}}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        height: "92vh",
+      }}
+    >
       <div className="Container">
         <div className="pt-28 px-8">
           <header className="Header font-sans font-bold">Log in</header>

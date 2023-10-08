@@ -47,10 +47,16 @@ function RegistrationScreen() {
   const handleRegistrationDB = async (user: any) => {
     const db = getFirestore();
     const id = user?.uid;
-    const userRef = doc(collection(db, "users"), id);
-    setDoc(userRef, {
+    if (isClient) {
+      const userRef = doc(collection(db, "users"), id);
+      setDoc(userRef, {
       walletID: walletID,
-    });
+    });}
+    else {
+      const userRef = doc(collection(db, "providers"), id);
+      setDoc(userRef, {
+      walletID: walletID,
+    });}
   };
 
   return (

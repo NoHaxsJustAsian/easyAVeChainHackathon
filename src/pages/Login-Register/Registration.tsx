@@ -12,6 +12,7 @@ function RegistrationScreen() {
   const nav = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [walletID, setWalletID] = useState<string>("");
+  const [policyNum, setPolicyNum] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmationPassword, setConfirmationPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
@@ -51,6 +52,7 @@ function RegistrationScreen() {
       const userRef = doc(collection(db, "users"), id);
       setDoc(userRef, {
       walletID: walletID,
+      policyNum: policyNum,
     });}
     else {
       const userRef = doc(collection(db, "providers"), id);
@@ -152,6 +154,17 @@ function RegistrationScreen() {
                 onChange={(e) => {
                   const val = e.target.value;
                   setWalletID(val);
+                }}
+              />
+            </InputGroup>
+            <InputGroup className="mb-3">
+              <Form.Control
+                required
+                type="text"
+                placeholder="Health Insurance Policy Number"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setPolicyNum(val);
                 }}
               />
             </InputGroup>

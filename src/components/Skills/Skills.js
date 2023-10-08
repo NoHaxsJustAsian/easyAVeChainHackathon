@@ -38,7 +38,7 @@ export const Skills = () => {
                     <Col>
                     <div className="skill-bx">
                         <h2>
-                            Technical Skills
+                            Technologies Used
                         </h2>
                         <TechnicalSkills skills={skills}/>
                     </div>

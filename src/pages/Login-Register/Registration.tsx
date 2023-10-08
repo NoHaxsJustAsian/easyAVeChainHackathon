@@ -1,19 +1,12 @@
-import { useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import "./Registration.css";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from 'react';
+import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import './Registration.css'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore/lite";
-
-interface User {
-  username: string;
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-}
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 function RegistrationScreen() {
   const nav = useNavigate();
@@ -38,11 +31,10 @@ function RegistrationScreen() {
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    const auth = getAuth();
-    const user = await createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        // add to doc based on what they said
+        handleRegistrationDB(user);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -57,7 +49,6 @@ function RegistrationScreen() {
     const id = user?.uid;
     const userRef = doc(collection(db, "users"), id);
     setDoc(userRef, {
-      email: email,
       walletID: walletID,
     });
   };
@@ -169,8 +160,7 @@ function RegistrationScreen() {
                 onChange={(e) => {setIsClient(!isClient)}}
               />
             </InputGroup>
-
-            <Button variant="primary" type="submit" className="SubmitButton">
+            <Button variant="outline-secondary" type="submit" className='SubmitButton'>
               Sign up
             </Button>
             {error && <div className="text-danger mt-3">{error}</div>}
@@ -183,8 +173,8 @@ function RegistrationScreen() {
           </div>
         </div>
       </div>
-      <div className="bg-danger">
-        <img src={backdrop} className="object-cover" width="1178px" />
+      <div className="bg-info z-0">
+        <img src={backdrop} className="object-fill h-full" width="1178px" />
       </div>
     </div>
   );

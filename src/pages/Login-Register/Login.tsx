@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "./Registration.css";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, doc, getDoc } from "firebase/firestore/lite";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
 
@@ -24,7 +25,6 @@ function LoginScreen() {
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const auth = getAuth();
     const db = getFirestore();
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

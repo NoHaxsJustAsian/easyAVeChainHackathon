@@ -14,8 +14,11 @@ const ProviderLoggedIn = () => {
     const [fileUpload, setFileUpload] = useState<FileUpload>({ file: null, url: null });
 
     const handleButtonClick1 = () => {
-        <input type="file" onChange={handleFileUpload} />
-        {fileUpload.url && <img src={fileUpload.url} alt="Uploaded file" />}
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.jpg,.jpeg,.png,.pdf';
+        input.onchange = (event) => handleFileUpload(event as any);
+        input.click();
     };
 
     const handleButtonClick2 = () => {

@@ -43,7 +43,6 @@ function LoginScreen() {
         };
         getIsClient();
         console.log(isClient);
-        const nav = useNavigate();
         if (isClient) {
           nav(`/user-logged-in/${id}`);
         } else {

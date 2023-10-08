@@ -40,9 +40,9 @@ const UserLoggedIn = () => {
     };
 
     return (
-        <div>
-            <button onClick={() => handleButtonClick1()}>Upload Health Data</button>
-            <button onClick={() => handleButtonClick2()}>Check Button (For Testing)</button>
+        <div className="flex justify-center py-4 px-8 space-x-4">
+            <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick1()}>Upload Health Data</button>
+            <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2()}>Check Button (For Testing)</button>
         </div>
     );
 };

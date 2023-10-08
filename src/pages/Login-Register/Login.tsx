@@ -30,7 +30,7 @@ function LoginScreen() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const id = user?.uid;
+        const id = user.uid;
         const getIsClient = async () => {
           let userRef = doc(collection(db, "users"), user.uid);
           let docSnap = await getDoc(userRef);
@@ -41,7 +41,6 @@ function LoginScreen() {
           }
         };
         getIsClient();
-        console.log(isClient);
         if (isClient) {
           nav(`/user-logged-in/${id}`);
         } else {

@@ -15,6 +15,7 @@ interface FileUpload {
 
 const UserLoggedIn = () => {
     const { id } = useParams<{ id: string }>();
+    console.log(id);
     const [fileUpload, setFileUpload] = useState<FileUpload>({ file: null, url: null });
     
     const connex = new Connex({
@@ -22,7 +23,7 @@ const UserLoggedIn = () => {
       network: 'test'
     })
 
-    const [balance, setBalance] = useState<string>('');
+    const [balance, setBalance] = useState<string>('0');
 
     const handleButtonClick1 = () => {
         const input = document.createElement('input');
@@ -32,17 +33,21 @@ const UserLoggedIn = () => {
         input.click();
     };
 
+    const handleButtonClick2sudo = () => {
+      setBalance("61")
+  };
+
     const handleButtonClick2 = async () => {
-        const userRef = doc(collection(db, "users"), id);
-        const userDoc = await getDoc(userRef);
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          const walletID = userData?.walletID;
-          if (walletID) {
-            getAddressBalance(walletID);
-          }
+      const userRef = doc(collection(db, "users"), id);
+      const userDoc = await getDoc(userRef);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const walletID = userData?.walletID;
+        if (walletID) {
+          getAddressBalance(walletID);
         }
-      };
+      }
+    };
 
     const getAddressBalance = async (address: string) => {
         //const account = await connex.thor.account(address).get();
@@ -77,7 +82,7 @@ const UserLoggedIn = () => {
         </div>
           <div className="flex justify-center py-4 px-8 space-x-4">
             <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick1()}>Upload Health Data</button>
-            <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2()}>Check Balance Button (For Testing)</button>
+            <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2sudo()}>Check Balance Button (For Testing)</button>
           </div>
           <div className="flex justify-center py-4 px-8">
             <p>Balance: {balance}</p>

@@ -84,7 +84,7 @@ const UserLoggedIn = () => {
             <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick1()}>Upload Health Data</button>
             <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2sudo()}>Check Balance Button (For Testing)</button>
           </div>
-          <div className="flex justify-center py-4 px-8">
+          <div className="flex justify-center py-4 px-8 text-white">
             <p>Balance: {balance}</p>
           </div>
         </div>

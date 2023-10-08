@@ -63,12 +63,13 @@ export default function WelcomePage() {
         <AboutUs />
       </div>
       <div
-        style={{ padding: "150px" }}
-        className="bg-gradient-to-t bg-gray-700 via-gray-600 from-gray-500"
+        style={{ padding: "150px" , paddingTop: "0px"}}
+        className="bg-gradient-to-t via-gray-600 from-gray-700 bg-gray-500"
       >
         <Timeline />
       </div>
       <div
+        style={{ padding: "50px" }}
         className="bg-gradient-to-t bg-gray-500 via-gray-400 from-gray-300"
       >
         <TeamMembers2 />

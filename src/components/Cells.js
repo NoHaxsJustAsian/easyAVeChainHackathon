@@ -1,32 +1,60 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import logo from "../assets/img/map.png";
-import safety from "./safety-icon.png";
-import snowboard from "./robots.png";
-import world from "./world.png";
+import safety from "../assets/img/safety-icon.png";
+import snowboard from "../assets/img/fire.jpg";
+import world from "../assets/img/world.png";
 
 export const Cells = () => {
     return (
         <Container>
             <div className="flex flex-wrap justify-between">
-                {[{
-                    imgSrc: logo, width: "26", title: "Location Based", description: "TAP uses geolocation to find plans and potential friends near you."
-                }, {
-                    imgSrc: safety, width: "37", title: "Freedom of Selection", description: "Not only can you create plans with locations and time, you can choose who joins."
-                }, {
-                    imgSrc: snowboard, width: "41", title: "Tailored To Your Interests", description: "Select your interests to generate a curated feed that suits your taste."
-                }, {
-                    imgSrc: world, width: "41", title: "Build Community", description: "Discover meaningful relationships and build a network of your new friends!"
-                }].map(({imgSrc, width, title, description}) => (
-                    <div key={title} style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
-                        <div className={`icon-${title.toLowerCase().replace(/\s/g, '-')}`}>
-                            <img src={imgSrc} width={width} />
-                        </div>
-                        <h3 className="mt-3 text-xl font-bold text-white">{title}</h3>
-                        <p className="mt-4 text-sm text-gray-300">{description}</p>
-                    </div>
-                ))}
+            <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
+                <div className="logo">
+                  <img src={logo} width="26" />
+                </div>
+
+                <h3 className="mt-3 text-xl font-bold text-white">Location Based</h3>
+
+                <p className="mt-4 text-sm text-gray-300">
+                    TAP uses geolocation to find plans and potential friends near you.
+                </p>
             </div>
+            <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
+                <div className="safety">
+                  <img src={safety} width="37" />
+                </div>
+
+                <h3 className="mt-3 text-xl font-bold text-white">Freedom of Selection</h3>
+
+                <p className="mt-4 text-sm text-gray-300">
+                    Not only can you create plans with locations and time, you can choose who joins.
+                </p>
+            </div>
+            <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
+                <div className="snowboard">
+                  <img src={snowboard} width="41" />
+                </div>
+
+                <h3 className="mt-3 text-xl font-bold text-white">Tailored To Your Interests</h3>
+
+                <p className="mt-4 text-sm text-gray-300">
+                    Select your interests to generate a curated feed that suits your taste.
+                </p>
+            </div>
+            <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
+                <div className="world">
+                  <img src={world} width="41" />
+                </div>
+
+                <h3 className="mt-3 text-xl font-bold text-white">Build Community</h3>
+
+                <p className="mt-4 text-sm text-gray-300">
+                    Discover meaningful relationships and build a network of your new friends!
+                </p>
+            </div>
+            </div>
+
         </Container>
     );
 }

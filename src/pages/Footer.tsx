@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-danger py-3">
+    <footer className="bg-info py-3">
       <div className="container">
         <div className="d-flex flex-column flex-md-row align-items-center">
           <p className="text-center text-md-left mb-2 mb-md-0" style={{ fontFamily: '"Futura", sans-serif', color: "black" }}>

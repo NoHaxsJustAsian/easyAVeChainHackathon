@@ -82,7 +82,7 @@ function LoginScreen() {
             </InputGroup>
             <Button
               className="font-sans font-bold"
-              variant="danger"
+              variant="info"
               type="submit"
             >
               Login
@@ -99,7 +99,7 @@ function LoginScreen() {
           <LogoCard />
         </div>
       </div>
-      <div className="bg-danger z-0">
+      <div className="bg-info z-0">
         <img src={backdrop} className="object-cover" width="1178px" />
       </div>
     </div>

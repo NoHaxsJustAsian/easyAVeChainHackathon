@@ -153,15 +153,6 @@ const Experience: React.FC = () => {
     <section className="text-white">
           <h1 style={headerStyle}>The Pipeline</h1> <hr />
       </section>
-      <motion.div variants={textVariant()}>
-        <p className={`text-center`}>
-          What I have done so far
-        </p>
-        <h2 className={`text-center`}>
-          Experience.
-        </h2>
-      </motion.div>
-
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
           {experiences.map((experience, index) => (

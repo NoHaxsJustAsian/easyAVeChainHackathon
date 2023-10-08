@@ -102,9 +102,9 @@ const ExperienceCard: React.FC<{ experience: ExperienceItem }> = ({ experience }
             style={{ position: 'absolute', top: '5%', right: '5%', width: '70px', height: '70px' }}
           />
         )}
-  
+
         <div>
-          <h3 className='text-white text-lg font-bold'>
+          <h3 className="nav-item font-bold" style={{ fontFamily: '"Futura", sans-serif', color: "white" }}>
             {experience.title}
           </h3>
           <p
@@ -128,7 +128,7 @@ const ExperienceCard: React.FC<{ experience: ExperienceItem }> = ({ experience }
               {experience.points.map((point, index) => (
                 <li
                   key={`experience-point-${index}`}
-                  className='text-white-100 text-sm pl-1 tracking-wider'>
+                  className="nav-item" style={{ fontFamily: '"Futura", sans-serif', color: "white" }}>
                   {point}
                 </li>
               ))}

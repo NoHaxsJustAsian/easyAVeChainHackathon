@@ -5,6 +5,7 @@ import LogoCard from "./LogoCard";
 import TeamMembers2 from "./TeamMembers2";
 import WhyVeHealth from "./WhyVeHealth";
 import backgroundIMG from "./background.png";
+import Timeline from "./Timeline/Timeline";
 
 export default function WelcomePage() {
   const background={
@@ -60,6 +61,12 @@ export default function WelcomePage() {
         className="bg-gradient-to-t bg-gray-700 via-gray-600 from-gray-500"
       >
         <AboutUs />
+      </div>
+      <div
+        style={{ padding: "150px" }}
+        className="bg-gradient-to-t bg-gray-700 via-gray-600 from-gray-500"
+      >
+        <Timeline />
       </div>
       <div
         className="bg-gradient-to-t bg-gray-500 via-gray-400 from-gray-300"

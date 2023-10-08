@@ -1,9 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Feed from "./pages/Feed";
 import Welcome from "./Home-Page/WelcomePart2";
-import MyPlans from "./pages/MyPlans";
-import Event from "./pages/Event";
 
 
 //import LoginScreen from './Login/login-screen';
@@ -23,9 +20,6 @@ function App() {
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/registration" element={<RegistrationScreen />} />
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/feed/:id" element={<Feed />} />
-          <Route path="/my-plans/:id" element={<MyPlans />} />
-          <Route path="/plan/:id/:eid" element={<Event/>}/>
         </Routes>
       </BrowserRouter>
       <Footer/>

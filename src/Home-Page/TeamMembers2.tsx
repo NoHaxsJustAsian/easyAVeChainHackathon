@@ -3,6 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const teamMembers2 = [
   {
+    name: "Tunwa (Win) Tongtawee",
+    photo: require("./Win.jpg"),
+    desc: "3nd year CS student at NEU",
+    link: "https://www.linkedin.com/in/tunwa-tongtawee/",
+  },
+  {
     name: "Jaren Adams",
     photo: require("./Jaren.jpg"),
     desc: "2nd year CS student at NEU",
@@ -15,31 +21,12 @@ const teamMembers2 = [
     link: "https://www.linkedin.com/in/caleb-lee-b481b8256/",
   },
   {
-    name: "Tunwa (Win) Tongtawee",
-    photo: require("./Win.jpg"),
-    desc: "2nd year CS student at NEU",
-    link: "https://www.linkedin.com/in/tunwa-tongtawee-336b791a4/",
-  },
-  {
     name: "Tristen Li",
     photo: require("./Tris.jpg"),
     desc: "3nd year CS student at NEU",
     link: "https://www.linkedin.com/in/tristen-li/",
-  },
-  {
-    name: "Lucy Ying",
-    photo: require("./Lucy.jpg"),
-    desc: "3nd year CS student at NEU",
-    link: "https://www.linkedin.com/in/lucy-ying/",
-  },
-  {
-    name: "Cole Harvey",
-    photo: require("./Cole.jpg"),
-    desc: "2nd year CS student at NEU",
-    link: "https://www.linkedin.com/in/cole-harvey-6038ab23b/",
-  },
+  }
 ];
-
 
 function TeamMembers2() {
   return (

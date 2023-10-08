@@ -7,6 +7,7 @@ import { auth } from "../../firebase";
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
+import { db } from "../../firebase";
 
 interface User {
   username: string;
@@ -18,7 +19,7 @@ function LoginScreen() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState(false);
-  const [isClient, setIsClient] = useState<boolean>(false);
+  const [isClient, setIsClient] = useState<boolean>(true);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -26,12 +27,10 @@ function LoginScreen() {
 
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const db = getFirestore();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         const id = user?.uid;
-        const userRef = doc(collection(db, "users"), id);
         const getIsClient = async () => {
           let userRef = doc(collection(db, "users"), user.uid);
           let docSnap = await getDoc(userRef);

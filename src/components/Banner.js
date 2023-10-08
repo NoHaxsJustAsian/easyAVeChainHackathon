@@ -8,15 +8,14 @@ export const Banner = () => {
   const [loopnum, setLoopnum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const toRotate = [
-    "Web Developer",
-    "Student",
-    "Influencer",
-    "Gamer",
-    "Software Engineer",
-    "PC Enthusiast",
+    "Cheaper",
+    "Trustworthy",
+    "Public",
+    "Fair",
+    "Seamless"
   ];
   const [text, setText] = useState("");
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
+  const [delta, setDelta] = useState(100 - Math.random() * 30);
   const period = 2000;
 
   useEffect(() => {
@@ -65,16 +64,15 @@ export const Banner = () => {
                     isVisible ? "animated__animated animat__fadeIn" : ""
                   }
                 >
-                  <span className="tagline">Welcome to my Portfolio</span>
+                  <span className="tagline">Your Life Just Got Cheaper</span>
                   <h1>
-                    {"Hi, I'm Win "}
+                    {"VeHealth"}
                     <h2>
                       <span className="wrap">{text}</span>
                     </h2>
                   </h1>
                   <p>
-                    I am currently a third-year student at Northeastern
-                    University, studying Computer Science.
+                    Built on VeChain
                   </p>
                 </div>
               )}

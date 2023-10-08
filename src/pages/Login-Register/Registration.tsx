@@ -1,29 +1,31 @@
-import { useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import './Registration.css'
+import { useState } from "react";
+import { Button, Form, InputGroup } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import "./Registration.css";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore/lite";
 
 interface User {
-  username: string,
-  email: string,
-  password: string,
-  firstName: string,
-  lastName: string,
+  username: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 }
 
 function RegistrationScreen() {
   const nav = useNavigate();
-  const [email, setEmail] = useState<string>('');
-  const [walletID, setWalletID] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmationPassword, setConfirmationPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [walletID, setWalletID] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmationPassword, setConfirmationPassword] = useState<string>("");
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
-  const [confirmationPasswordShown, setConfirmationPasswordShown] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const [confirmationPasswordShown, setConfirmationPasswordShown] =
+    useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [isClient, setIsClient] = useState<boolean>(true);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -32,12 +34,15 @@ function RegistrationScreen() {
     setConfirmationPasswordShown(!confirmationPasswordShown);
   };
 
-  const handleRegistration = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleRegistration = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
+    const user = await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        // add to doc based on what they said
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -50,94 +55,136 @@ function RegistrationScreen() {
   const handleRegistrationDB = async (user: any) => {
     const db = getFirestore();
     const id = user?.uid;
-    const userRef = doc(collection(db, 'users'), id);
+    const userRef = doc(collection(db, "users"), id);
     setDoc(userRef, {
       email: email,
       walletID: walletID,
     });
-  }
+  };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", height: "92vh"}}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        height: "92vh",
+      }}
+    >
       <div className="Container">
         <div className="pt-14 px-8">
-          <header className="Header font-sans font-bold" >Sign Up</header>
+          {/* <div className="relative bottom-0 items-center text-slate-900">
+          <LogoCard/>
+        </div> */}
+          <header className="Header font-sans font-bold">Sign Up</header>
           <hr className="pt-0" />
-          <Form className='Form' onSubmit={handleRegistration}>
+          <Form className="Form" onSubmit={handleRegistration}>
             <InputGroup className="mb-3" hasValidation>
-              <Form.Control 
+              <Form.Control
                 required
-                type="email" 
-                placeholder="Email" 
+                type="email"
+                placeholder="Email"
                 value={email}
                 isInvalid={!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && !!email}
-                onChange={e => {
+                onChange={(e) => {
                   const val = e.target.value;
                   setEmail(val);
-                }}/>
+                }}
+              />
               <Form.Control.Feedback type="invalid">
                 Invalid email address
               </Form.Control.Feedback>
             </InputGroup>
-            <InputGroup className="mb-3">          
-              <Form.Control 
+            <InputGroup className="mb-3">
+              <Form.Control
                 required
-                type={passwordShown ? "text" : "password"} 
-                placeholder="Password" 
+                type={passwordShown ? "text" : "password"}
+                placeholder="Password"
                 value={password}
-                onChange={e => {
+                onChange={(e) => {
                   const val = e.target.value;
                   setPassword(val);
-                }}/>
-              <Button variant="outline-secondary" id="addon" onClick={togglePassword} className="ShowButton">
-                <i className={passwordShown ? "fas fa-eye-slash" : "fas fa-eye" } />
+                }}
+              />
+              <Button
+                variant="outline-secondary"
+                id="addon"
+                onClick={togglePassword}
+                className="ShowButton"
+              >
+                <i
+                  className={passwordShown ? "fas fa-eye-slash" : "fas fa-eye"}
+                />
               </Button>
             </InputGroup>
             <InputGroup className="mb-3" hasValidation>
-              <Form.Control 
-                type={confirmationPasswordShown ? "text" : "password"} 
-                placeholder="Confirm Password" 
+              <Form.Control
+                type={confirmationPasswordShown ? "text" : "password"}
+                placeholder="Confirm Password"
                 value={confirmationPassword}
-                isInvalid={password !== confirmationPassword && !!confirmationPassword}
-                onChange={e => {
+                isInvalid={
+                  password !== confirmationPassword && !!confirmationPassword
+                }
+                onChange={(e) => {
                   const val = e.target.value;
                   setConfirmationPassword(val);
-                }}/>
-              <Button variant="outline-secondary" id="addon2" onClick={toggleConfirmationPassword} className="ShowButton">
-                <i className={confirmationPasswordShown ? "fas fa-eye-slash" : "fas fa-eye" } />
+                }}
+              />
+              <Button
+                variant="outline-secondary"
+                id="addon2"
+                onClick={toggleConfirmationPassword}
+                className="ShowButton"
+              >
+                <i
+                  className={
+                    confirmationPasswordShown
+                      ? "fas fa-eye-slash"
+                      : "fas fa-eye"
+                  }
+                />
               </Button>
               <Form.Control.Feedback type="invalid">
                 Passwords do not match!
               </Form.Control.Feedback>
             </InputGroup>
             <InputGroup className="mb-3">
-              <Form.Control 
+              <Form.Control
                 required
-                type="text" 
-                placeholder="WalletID" 
-                onChange={e => {
+                type="text"
+                placeholder="WalletID"
+                onChange={(e) => {
                   const val = e.target.value;
                   setWalletID(val);
-                }}/>
+                }}
+              />
             </InputGroup>
-            <Button variant="danger" type="submit" className='SubmitButton'>
+            <InputGroup className="mx-3">
+                <InputGroup.Text id="healthcare-provider-label" className="mx-3">
+                  Are you a healthcare provider?
+                </InputGroup.Text>
+              <Form.Check
+                type="checkbox"
+                id="healthcare-provider-checkbox"
+                label="Yes"
+                onChange={(e) => {setIsClient(!isClient)}}
+              />
+            </InputGroup>
+
+            <Button variant="primary" type="submit" className="SubmitButton">
               Sign up
             </Button>
-            {error && (
-              <div className="text-danger mt-3">{error}</div>
-            )}
+            {error && <div className="text-danger mt-3">{error}</div>}
           </Form>
           <div className="SwitchLoginCreateGroup">
             <p>Already have an account?</p>
-            <Link to="/login" className="font-sans font-bold">Sign in</Link>
+            <Link to="/login" className="font-sans font-bold">
+              Sign in
+            </Link>
           </div>
-        </div>
-        <div className="relative bottom-0 items-center text-slate-900">
-          <LogoCard/>
         </div>
       </div>
       <div className="bg-danger">
-        <img src={backdrop} className="object-cover" width="1178px"/>
+        <img src={backdrop} className="object-cover" width="1178px" />
       </div>
     </div>
   );

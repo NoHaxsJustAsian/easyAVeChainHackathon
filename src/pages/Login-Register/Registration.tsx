@@ -69,9 +69,9 @@ function RegistrationScreen() {
     >
       <div className="Container">
         <div className="pt-14 px-8">
-          {/* <div className="relative bottom-0 items-center text-slate-900">
+          <div className="relative bottom-0 items-center text-slate-900">
           <LogoCard/>
-        </div> */}
+        </div>
           <header className="Header font-sans font-bold">Sign Up</header>
           <hr className="pt-0" />
           <Form className="Form" onSubmit={handleRegistration}>

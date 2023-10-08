@@ -1,0 +1,19 @@
+.Container {
+    width: 50rem;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.ProfileHeader {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.FormGroup {
+    flex-direction: column;
+}
+
+.ProfileSubmit {
+    margin: 1rem auto 1rem 0;
+    padding: 0.25rem 2rem;
+}

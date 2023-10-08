@@ -42,7 +42,7 @@ function TeamMembers2() {
           return (
             <div
               key={index}
-              className="col-lg-4 col-sm-6 mb-4"
+              className="col-lg-3 col-sm-6 mb-4"
             >
               <a
                 href="#"

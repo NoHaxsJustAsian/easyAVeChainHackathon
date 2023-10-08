@@ -13,20 +13,9 @@ export default function AboutUs() {
   return (
     <Container>
     <section className="text-white">
-      <h1 style={headerStyle}>Purpose of TAP</h1> <hr />
+      <h1 style={headerStyle}>How VeHealth WorksP</h1> <hr />
       <p style={{ ...paragraphStyle, padding: "5px" }}>
-        Time N’ Place is a solution born from a problem. As a team of university
-        students, we’ve all experienced a lack of awareness for events around
-        campus, completely missing out on potential opportunities to have fun.
-        Weekends would be spent rotting in dorms instead of using our precious
-        time to connect with other students. However, college is a time and
-        place for exploration, meeting new people, and making lasting memories.
-        People coming from around the world to an unfamiliar place with
-        unfamiliar people experience even more difficulty. There needed to be
-        something to bridge the gap between students hungry for involvement and
-        plans waiting to be made. Time N’ Place is our effort to cultivate that
-        social environment for other students, building a rich and
-        interconnected community.
+      VeHealth operates by offering a platform where patients can discover opportunities to earn VeTokens based on their healthcare data. We achieve this by collaborating with healthcare providers who receive your health information. In return, they offer you VeTokens as a reward if you meet the eligibility criteria. Importantly, there is no risk involved, as your insurance rates will not increase. However, if you demonstrate good health, you will receive VeTokens as a form of monetary incentive. This process is facilitated through the use of smart contracts, ensuring the accurate calculation of your data.
       </p>
       </section>
     </Container>

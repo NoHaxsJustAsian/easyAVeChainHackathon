@@ -24,8 +24,8 @@ export default function WelcomePage() {
       <div className="mx-auto px-4 py-32 lg:flex lg:h-screen lg:items-center" style={background}>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="bg-gradient-to-r from-yellow-300 via-orange-500 to-red-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-            Friendships Made Easy.
-            <span className="sm:block text-2xl"> Lasting connections in the palm of your hand. </span>
+            Transforming Healthcare.
+            <span className="sm:block text-2xl"> Fair pricing for all healthcare. </span>
           </h1>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">

@@ -100,7 +100,7 @@ function LoginScreen() {
         </div>
       </div>
       <div className="bg-info z-0">
-        <img src={backdrop} className="object-cover" width="1178px" />
+        <img src={backdrop} className="object-fill h-full" width="1178px" />
       </div>
     </div>
   );

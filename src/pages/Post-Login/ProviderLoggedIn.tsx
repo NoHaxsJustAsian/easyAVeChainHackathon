@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { storage } from "../../firebase";
 import { useParams } from "react-router-dom";
-import { useConnex } from '@vechain/connex';
+import { Connex } from '@vechain/connex';
 import { getFirestore, collection, doc, getDoc, DocumentSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -10,6 +10,8 @@ interface FileUpload {
     file: File | null;
     url: string | null;
   }
+
+  const smartContractAdderss = "0x20812a3fd9a2734eda90508fb895b8d5dda00b31"
 
 const ProviderLoggedIn = () => {
     const { id } = useParams<{ id: string }>();
@@ -23,7 +25,11 @@ const ProviderLoggedIn = () => {
         input.click();
     };
 
-    const connex = useConnex();
+    const connex = new Connex({
+      node: 'https://testnet.veblocks.net/',
+      network: 'test'
+    })
+
     const [balance, setBalance] = useState<string>('');
 
     const handleButtonClick2 = async () => {
@@ -34,6 +40,27 @@ const ProviderLoggedIn = () => {
           const walletID = userData?.walletID;
           if (walletID) {
             // send contract here 
+            try {
+              await connex.thor
+                .account(smartContractAdderss)
+                .method({
+                  "inputs": [
+                    {
+                      "internalType": "address",
+                      "name": "x",
+                      "type": "address"
+                    }
+                  ],
+                  "name": "setProvider",
+                  "outputs": [],
+                  "stateMutability": "nonpayable",
+                  "type": "function"
+                })
+                .call(id)
+            }
+            catch {
+
+            }
           }
         }
       };

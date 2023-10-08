@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { storage } from "../../firebase";
 import { useParams } from "react-router-dom";
-import { useConnex } from '@vechain/connex';
+import { Connex } from '@vechain/connex';
 import { getFirestore, collection, doc, getDoc, DocumentSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -15,8 +15,12 @@ interface FileUpload {
 const UserLoggedIn = () => {
     const { id } = useParams<{ id: string }>();
     const [fileUpload, setFileUpload] = useState<FileUpload>({ file: null, url: null });
+    
+    const connex = new Connex({
+      node: 'https://testnet.veblocks.net/',
+      network: 'test'
+    })
 
-    const connex = useConnex();
     const [balance, setBalance] = useState<string>('');
 
     const handleButtonClick1 = () => {
@@ -40,8 +44,13 @@ const UserLoggedIn = () => {
       };
 
     const getAddressBalance = async (address: string) => {
-        const account = await connex.thor.account(address).get();
-        const balance = account.balance.toString();
+        //const account = await connex.thor.account(address).get();
+        //const balance = account.balance.toString();
+        const account = connex.thor.account(address);
+        account.get().then(accInfo => {
+          const balance = accInfo.balance
+          setBalance(parseInt(balance, 16).toString())
+        })
         setBalance(balance);
       };
 

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { storage } from "../../firebase";
 import { useParams } from "react-router-dom";
+import { useConnex } from '@vechain/connex';
+import { getFirestore, collection, doc, getDoc, DocumentSnapshot } from "firebase/firestore";
+import { db } from "../../firebase";
 
 
 interface FileUpload {
@@ -13,6 +16,9 @@ const UserLoggedIn = () => {
     const { id } = useParams<{ id: string }>();
     const [fileUpload, setFileUpload] = useState<FileUpload>({ file: null, url: null });
 
+    const connex = useConnex();
+    const [balance, setBalance] = useState<string>('');
+
     const handleButtonClick1 = () => {
         const input = document.createElement('input');
         input.type = 'file';
@@ -21,9 +27,23 @@ const UserLoggedIn = () => {
         input.click();
     };
 
-    const handleButtonClick2 = () => {
-        //funct check money from contract
-    };
+    const handleButtonClick2 = async () => {
+        const userRef = doc(collection(db, "users"), id);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const walletID = userData?.walletID;
+          if (walletID) {
+            getAddressBalance(walletID);
+          }
+        }
+      };
+
+    const getAddressBalance = async (address: string) => {
+        const account = await connex.thor.account(address).get();
+        const balance = account.balance.toString();
+        setBalance(balance);
+      };
 
     const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -41,11 +61,16 @@ const UserLoggedIn = () => {
     };
 
     return (
-        <div className="flex justify-center py-4 px-8 space-x-4">
+        <div>
+          <div className="flex justify-center py-4 px-8 space-x-4">
             <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick1()}>Upload Health Data</button>
             <button className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline" onClick={() => handleButtonClick2()}>Check Button (For Testing)</button>
+          </div>
+          <div className="flex justify-center py-4 px-8">
+            <p>Balance: {balance}</p>
+          </div>
         </div>
-    );
+      );
 };
 
 export default UserLoggedIn;

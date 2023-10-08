@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { storage } from "../../firebase";
 import { useParams } from "react-router-dom";
+import { useConnex } from '@vechain/connex';
+import { getFirestore, collection, doc, getDoc, DocumentSnapshot } from "firebase/firestore";
+import { db } from "../../firebase";
 
 interface FileUpload {
     file: File | null;
@@ -10,9 +13,8 @@ interface FileUpload {
 
 const ProviderLoggedIn = () => {
     const { id } = useParams<{ id: string }>();
-
     const [fileUpload, setFileUpload] = useState<FileUpload>({ file: null, url: null });
-
+    
     const handleButtonClick1 = () => {
         const input = document.createElement('input');
         input.type = 'file';
@@ -21,9 +23,20 @@ const ProviderLoggedIn = () => {
         input.click();
     };
 
-    const handleButtonClick2 = () => {
-        //trig func for contract
-    };
+    const connex = useConnex();
+    const [balance, setBalance] = useState<string>('');
+
+    const handleButtonClick2 = async () => {
+        const userRef = doc(collection(db, "users"), id);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const walletID = userData?.walletID;
+          if (walletID) {
+            // send contract here 
+          }
+        }
+      };
 
     const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];

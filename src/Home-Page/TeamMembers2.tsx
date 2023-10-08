@@ -17,13 +17,13 @@ const teamMembers2 = [
   {
     name: "Aryan Malik",
     photo: require("./Aryan.jpeg"),
-    desc: "3nd year Math and Finance at Rutgers University",
+    desc: "1st year Math and Finance at Rutgers University",
     link: "https://www.linkedin.com/in/aryan-malik-xd/",
   },
   {
     name: "Adam Belfi",
     photo: require("./Adam.jpeg"),
-    desc: "5nd year CS student at NEU",
+    desc: "5th year CS student at NEU",
     link: "https://www.linkedin.com/in/adam-belfki/",
   }
 ];

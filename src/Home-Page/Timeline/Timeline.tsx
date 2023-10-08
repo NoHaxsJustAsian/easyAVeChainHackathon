@@ -13,6 +13,11 @@ interface ExperienceItem {
   image?: string;
 }
 
+const headerStyle = {
+  textAlign: "center" as "center",
+  fontFamily: '"Futura", sans-serif',
+};
+
 const experiences: ExperienceItem[] = [
     {
         type: 'user',
@@ -82,7 +87,9 @@ const experiences: ExperienceItem[] = [
 
 const ExperienceCard: React.FC<{ experience: ExperienceItem }> = ({ experience }) => {
     return (
+      
       <VerticalTimelineElement
+      
         id="experience"
         contentStyle={{
           background: "#1d1836",
@@ -142,16 +149,10 @@ const ExperienceCard: React.FC<{ experience: ExperienceItem }> = ({ experience }
 const Experience: React.FC = () => {
 
   return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={`text-center`}>
-          What I have done so far
-        </p>
-        <h2 className={`text-center`}>
-          Experience.
-        </h2>
-      </motion.div>
-
+    <>     
+    <section className="text-white">
+          <h1 style={headerStyle}>The Pipeline</h1> <hr />
+      </section>
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
           {experiences.map((experience, index) => (

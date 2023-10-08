@@ -1,24 +1,22 @@
-
-import './App.css';
-import { NavBar } from './components/NavBar';
-import { Banner} from './components/Banner';
-import { Skills } from './components/Skills/Skills';
-import { Footer } from './components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Experience from './components/Timeline/Experience';
-
-
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Home from "./Home";
+import {Footer} from "./components/Footer";
+import {NavBar} from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <NavBar />
-      <Banner />
-      <Skills />
-      <Experience />
-      <div><Footer /></div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer/>
     </div>
-      );
+  );
 }
 
 export default App;

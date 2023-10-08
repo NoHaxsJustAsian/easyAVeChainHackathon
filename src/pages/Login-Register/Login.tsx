@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "./Registration.css";
-import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
 import backdrop from "./backdrop.jpg";
 import LogoCard from "../../Home-Page/LogoCard";
@@ -47,6 +47,9 @@ function LoginScreen() {
     <div style={{ display: "flex", justifyContent: "space-between", height: "92vh"}}>
       <div className="Container">
         <div className="pt-28 px-8">
+        <div className="relative bottom-0 items-center text-slate-900">
+          <LogoCard/>
+        </div>
           <header className="Header font-sans font-bold">Log in</header>
           <hr className="pt-0" />
           <Form onSubmit={handleLogin}>
@@ -94,9 +97,6 @@ function LoginScreen() {
               Register
             </Link>
           </div>
-        </div>
-        <div className="relative bottom-0 left-5 text-slate-900">
-          <LogoCard />
         </div>
       </div>
       <div className="bg-info z-0">

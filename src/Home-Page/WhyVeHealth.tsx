@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
 import logo from "./map.png";
 import safety from "./safety-icon.png";
-import snowboard from "./robots.png";
-import world from "./world.png";
+import healthy from "./healthy.png";
+import lock from "./lock.png";
 
 function WhyVeHealth() {
     return (
@@ -13,10 +13,10 @@ function WhyVeHealth() {
                   <img src={logo} width="26" />
                 </div>
 
-                <h3 className="mt-3 text-xl font-bold text-white">Location Based</h3>
+                <h3 className="mt-3 text-xl font-bold text-white">Individualized</h3>
 
                 <p className="mt-4 text-sm text-gray-300">
-                    TAP uses geolocation to find plans and potential friends near you.
+                    Personalized data for a personalized plan.
                 </p>
             </div>
             <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
@@ -31,25 +31,25 @@ function WhyVeHealth() {
                 </p>
             </div>
             <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
-                <div className="snowboard">
-                  <img src={snowboard} width="41" />
+                <div className="healthy">
+                  <img src={healthy} width="41" />
                 </div>
 
-                <h3 className="mt-3 text-xl font-bold text-white">Tailored To Your Interests</h3>
+                <h3 className="mt-3 text-xl font-bold text-white">Live Healthy!</h3>
 
                 <p className="mt-4 text-sm text-gray-300">
-                    Select your interests to generate a curated feed that suits your taste.
+                    Discover all the benefits of living a more active lifestyle.
                 </p>
             </div>
             <div style={{ maxWidth: "20%" }} className="block rounded-xl border border-gray-800 bg-gray-800 p-8 shadow-xl no-underline hover:-translate-y-1 hover:scale-110 duration-150">
-                <div className="world">
-                  <img src={world} width="41" />
+                <div className="lock">
+                  <img src={lock} width="41" />
                 </div>
 
-                <h3 className="mt-3 text-xl font-bold text-white">Build Community</h3>
+                <h3 className="mt-3 text-xl font-bold text-white">Security First</h3>
 
                 <p className="mt-4 text-sm text-gray-300">
-                    Discover meaningful relationships and build a network of your new friends!
+                    Your data is secure on the blockchain, and never sold.
                 </p>
             </div>
             </div>

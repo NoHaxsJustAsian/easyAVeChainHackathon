@@ -4,7 +4,7 @@ import AboutUs from "./About-Us";
 import LogoCard from "./LogoCard";
 import TeamMembers2 from "./TeamMembers2";
 import WhyVeHealth from "./WhyVeHealth";
-import backgroundIMG from "./bagrand.jpg";
+import backgroundIMG from "./background.png";
 
 export default function WelcomePage() {
   const background={
@@ -12,7 +12,7 @@ export default function WelcomePage() {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     width: '100%',
-    overflowx:'hidden',
+    overflowx:'show',
   }
 
   return (
@@ -23,21 +23,21 @@ export default function WelcomePage() {
       </div>
       <div className="mx-auto px-4 py-32 lg:flex lg:h-screen lg:items-center" style={background}>
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="bg-gradient-to-r from-yellow-300 via-orange-500 to-red-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+          <h1 className="bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
             Transforming Healthcare.
             <span className="sm:block text-2xl"> Fair pricing for all healthcare. </span>
           </h1>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
-                className="font-bold block w-full rounded border border-red-600 bg-red-600 px-12 py-3 text-sm text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
+                className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto no-underline"
                 href="login"
               >
                 Login
               </a>
 
               <a
-                className="font-bold block w-full rounded border border-red-600 px-12 py-3 text-sm text-white hover:bg-red-600 focus:outline-none focus:ring active:bg-red-500 sm:w-auto no-underline"
+                className="font-bold block w-full rounded border border-purple-500 bg-cyan-500 px-12 py-3 text-sm text-white hover:bg-indigo-500 focus:outline-none focus:ring sm:w-auto no-underline"
                 href="#section2"
               >
                 Learn More
